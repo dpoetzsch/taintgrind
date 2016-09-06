@@ -4868,12 +4868,12 @@ void TNT_(h64_amd64g_calculate_condition) (
                     ltmp, _ti(ltmp),
                     KNRM);
 
-      VG_(printf)("%s%s%s | %s", KMAG, fnname, KNRM, aTmp);
+      VG_(printf)("==%d== %s%s%s | %s", H_PID, KMAG, fnname, KNRM, aTmp);
       ppIRExpr( ccall );
       VG_(printf)(" | 0x%llx | 0x%llx | ", value, taint);
    } else {
       VG_(sprintf)( aTmp, "t%d_%d = ", ltmp, _ti(ltmp) );
-      VG_(printf)("%s | %s", fnname, aTmp);
+      VG_(printf)("==%d== %s | %s", H_PID, fnname, aTmp);
       ppIRExpr( ccall );
       VG_(printf)(" | 0x%llx | 0x%llx | ", value, taint);
    }
