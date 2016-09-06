@@ -2632,35 +2632,38 @@ int istty = 0;
       ti[ltmp] &= 0x7fffffff; \
    tv[ltmp] = value;
 
+#define H_PID \
+   VG_(getpid)()
+
 #define H32_PRINT \
-   VG_(printf)("%s | %s | 0x%x | 0x%x | ", fnname, aTmp, value, taint);
+   VG_(printf)("==%d== %s | %s | 0x%x | 0x%x | ", H_PID, fnname, aTmp, value, taint);
 
 #define H32_PRINT_OP \
-   VG_(printf)("%s | %s", fnname, aTmp1); \
+   VG_(printf)("==%d== %s | %s", H_PID, fnname, aTmp1);       \
    ppIROp(op); \
    VG_(printf)("%s | 0x%x | 0x%x | ", aTmp2, value, taint);
 
 #define H32_PRINTC \
-   VG_(printf)("%s%s%s | %s | 0x%x | 0x%x | ", KMAG, fnname, KNRM, aTmp, value, taint);
+   VG_(printf)("==%d== %s%s%s | %s | 0x%x | 0x%x | ", H_PID, KMAG, fnname, KNRM, aTmp, value, taint);
 
 #define H32_PRINTC_OP \
-   VG_(printf)("%s%s%s | %s", KMAG, fnname, KNRM, aTmp1); \
+   VG_(printf)("==%d== %s%s%s | %s", H_PID, KMAG, fnname, KNRM, aTmp1); \
    ppIROp(op); \
    VG_(printf)("%s | 0x%x | 0x%x | ", aTmp2, value, taint);
 
 #define H64_PRINT \
-   VG_(printf)("%s | %s | 0x%llx | 0x%llx | ", fnname, aTmp, value, taint);
+   VG_(printf)("==%d== %s | %s | 0x%llx | 0x%llx | ", H_PID, fnname, aTmp, value, taint);
 
 #define H64_PRINT_OP \
-   VG_(printf)("%s | %s", fnname, aTmp1); \
+   VG_(printf)("==%d== %s | %s", H_PID, fnname, aTmp1);        \
    ppIROp(op); \
    VG_(printf)("%s | 0x%llx | 0x%llx | ", aTmp2, value, taint);
 
 #define H64_PRINTC \
-   VG_(printf)("%s%s%s | %s | 0x%llx | 0x%llx | ", KMAG, fnname, KNRM, aTmp, value, taint);
+   VG_(printf)("==%d== %s%s%s | %s | 0x%llx | 0x%llx | ", H_PID, KMAG, fnname, KNRM, aTmp, value, taint);
 
 #define H64_PRINTC_OP \
-   VG_(printf)("%s%s%s | %s", KMAG, fnname, KNRM, aTmp1); \
+   VG_(printf)("==%d== %s%s%s | %s", H_PID, KMAG, fnname, KNRM, aTmp1); \
    ppIROp(op); \
    VG_(printf)("%s | 0x%llx | 0x%llx | ", aTmp2, value, taint);
 
